@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  web:
+    image: registry.cloud.okteto.net/ffha/google-fonts:latest
+    container_name: proxy
+    restart: always
+    volumes:
+      - ./data:/data
+    ports:
+      - "80:80"
