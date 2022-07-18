@@ -1,2 +1,1 @@
-FROM nginx:stable-alpine
-COPY nginx.conf /etc/nginx/nginx.conf
+FROM registry.cloud.okteto.net/ffha/google-fonts:latest
