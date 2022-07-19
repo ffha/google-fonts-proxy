@@ -1,5 +1,5 @@
 FROM alpine
-RUN apk add tzdata tini openssl curl ca-certificates
+RUN apk add tzdata tini openssl curl ca-certificates sudo
 RUN printf "%s%s%s%s\n" \
     "@nginx " \
     "http://nginx.org/packages/alpine/v" \
