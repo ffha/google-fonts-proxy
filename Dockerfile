@@ -1,6 +1,6 @@
 FROM alpine
 ENV NGINX_VERSION 1.22.0
-RUN apk add gcc openssl-dev wget zlib-dev make gd-dev geoip-dev pcre2-dev git libc-dev
+RUN apk add gcc openssl-dev wget zlib-dev make gd-dev geoip-dev pcre2-dev git libc-dev openssl zlib pcre2 gd geoip
 WORKDIR /usr/src
 RUN git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module
 RUN git clone --recurse-submodules https://github.com/google/ngx_brotli
