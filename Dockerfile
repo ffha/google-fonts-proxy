@@ -17,4 +17,4 @@ RUN ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime
 RUN echo ${TZ} > /etc/timezone
 COPY 404.html /usr/share/nginx/html
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD nginx
+CMD nginx -g "daemon off;"
