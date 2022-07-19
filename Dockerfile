@@ -4,6 +4,9 @@ RUN apk add gcc openssl-dev wget zlib-dev make gd-dev geoip-dev pcre2-dev git li
 WORKDIR /usr/src
 RUN git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module
 RUN git clone --recurse-submodules https://github.com/google/ngx_brotli
+WORKDIR /usr/src/ngx_brotli/deps/brotli
+RUN git checkout v1.0.9
+WORKDIR /usr/src
 RUN wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
 RUN tar zxvf nginx-${NGINX_VERSION}.tar.gz
 WORKDIR /usr/src/nginx-${NGINX_VERSION}
