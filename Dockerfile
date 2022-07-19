@@ -1,6 +1,6 @@
 FROM alpine
 ENV NGINX_VERSION 1.22.0
-RUN apk add gcc openssl-dev wget zlib-dev make gd-dev geoip-dev pcre2-dev git libc-dev openssl zlib pcre2 gd geoip
+RUN apk add gcc openssl-dev wget zlib-dev make gd-dev geoip-dev pcre2-dev git libc-dev openssl zlib pcre2 gd geoip ca-certificates
 WORKDIR /usr/src
 RUN git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module
 RUN git clone --recurse-submodules https://github.com/google/ngx_brotli
@@ -14,7 +14,7 @@ RUN ./configure --prefix=/usr/share/nginx --sbin-path=/sbin/nginx --modules-path
 RUN make -j $(nproc)
 RUN make install
 WORKDIR /
-RUN apk del zlib-dev geoip-dev pcre2-dev gd-dev gcc wget libc-dev git
+RUN apk del zlib-dev geoip-dev pcre2-dev gd-dev gcc libc-dev git
 RUN rm -rf /usr/src
 COPY nginx.conf /etc/nginx/nginx.conf
 CMD nginx -g "daemon off;"
