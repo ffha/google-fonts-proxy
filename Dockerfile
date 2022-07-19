@@ -1,5 +1,5 @@
 FROM alpine
-RUN apk add tzdata tini nginx nginx-mod-brotli
+RUN apk add tzdata tini nginx nginx-mod-http-brotli
 COPY nginx.conf /etc/nginx/http.d/default.conf
 ENV TIMEZONE=Asia/Shanghai
 ENV TZ Asia/Shanghai
