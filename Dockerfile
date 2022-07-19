@@ -11,7 +11,7 @@ RUN ./configure --prefix=/usr/share/nginx --sbin-path=/sbin/nginx --modules-path
 RUN make -j $(nproc)
 RUN make install
 RUN apk del zlib-dev geoip-dev pcre2-dev openssl-dev gd-dev gcc wget libc-dev
-RUN rm -rf /usr/src/tengine-${TENGINE_VERSION}
+RUN rm -rf /usr/src/*
 COPY nginx.conf /etc/nginx/nginx.conf
 RUN rm -rf /usr/src/*
 ENTRYPOINT ["/sbin/tini", "--"]
