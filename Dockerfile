@@ -4,8 +4,6 @@ RUN apk add gcc openssl-dev wget zlib-dev make gd-dev geoip-dev pcre2-dev git li
 WORKDIR /usr/src
 RUN git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module
 RUN git clone --recurse-submodules https://github.com/google/ngx_brotli
-WORKDIR /usr/src/ngx_brotli/deps/brotli
-RUN git checkout v1.0.9
 WORKDIR /usr/src
 RUN wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
 RUN tar zxvf nginx-${NGINX_VERSION}.tar.gz
@@ -16,7 +14,7 @@ RUN ./configure --prefix=/usr/share/nginx --sbin-path=/sbin/nginx --modules-path
 RUN make -j $(nproc)
 RUN make install
 WORKDIR /
-RUN apk del zlib-dev geoip-dev pcre2-dev openssl-dev gd-dev gcc wget libc-dev git
+RUN apk del zlib-dev geoip-dev pcre2-dev gd-dev gcc wget libc-dev git
 RUN rm -rf /usr/src
 COPY nginx.conf /etc/nginx/nginx.conf
 CMD nginx -g "daemon off;"
